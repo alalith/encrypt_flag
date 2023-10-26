@@ -1,4 +1,4 @@
-key = ""
+key = "SuP3R_S3cR3t_K3y"
 flag = open('flag.txt', 'r').read()
 enc_flag = ""
 for i in range(len(flag)):
