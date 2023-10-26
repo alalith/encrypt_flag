@@ -1,8 +1,15 @@
-key = "SuP3R_S3cR3t_K3y"
-flag = open('flag.txt', 'r').read()
+#!/usr/bin/python3
+import os
+
+key = os.environ['SECRET_KEY']
+
+flag = open('flag.txt', 'r').read().strip()
 enc_flag = ""
-for i in range(len(flag)):
-    enc_flag += chr(ord(flag[i]) ^ ord(key[(i % len(key))]) % 128)
+i = 0
+while i < len(flag):
+    enc_flag += format(int(flag[i:i+2], 16) ^ ord(key[i//2 % len(key)]), '02x')
+    i += 2
 
 open('enc_flag.txt','w').write(enc_flag)
+
 
